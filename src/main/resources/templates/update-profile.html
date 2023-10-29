@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section class="mb-4">
+
+    <nav aria-label="breadcrumb" role="navigation" class="text-white" style="line-height: 0px;background: #181818;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a>
+                        </li>
+
+                        <span style="padding-left:10px;padding-right:10px;">/</span>
+
+                        <li class="breadcrumb-item"><a href="/profile">Profile</a>
+                        </li>
+
+                        <span style="padding-left:10px;padding-right:10px;">/</span>
+
+                        <li class="breadcrumb-item active" aria-current="page">Account Settings</li>
+                    </ol>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </nav>
+
+
+
+    <section class="space-sm pb-4" style="background: #0d0b0b;">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <h1 class="h2">Account Settings</h1>
+                </div>
+                <!--end of col-->
+                <div class="col-auto text-right">
+                    <a href="#" class="btn btn-success">Upgrade to Pro</a>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+
+
+    <section class="flush-with-above sect space-0 mb-5">
+        <div style="background: #181818;">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom:2px solid #181818;">
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">General</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="skill-tab" data-bs-toggle="tab" data-bs-target="#skills" type="button" role="tab" aria-controls="skill-tab-pane" aria-selected="true">Skill & Software</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#billing" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Password</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Security</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Resume</button>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="flush-with-above height-80 d-block update">
+        <div class="tab-content">
+
+
+            <div class="tab-pane fade active show" id="general" role="tabpanel">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div th:if="${profileImageMessage}"  th:classappend="${profileImageMessage.type}" class="alert mb-3" role="alert" th:text="${profileImageMessage.message}">
+                            </div>
+
+                            <div class="media account-ed flex-wrap mb-0 align-items-center">
+                                <img alt="Image" src="/FetchUserProfileFromFileSystem/FetchProfilePic" class="usercover avatarr-lg mb-3 mt-3 mb-md-0">
+                                <div class="media-body">
+                                    <form th:action="@{/update-profile-picture}" method="post" enctype="multipart/form-data">
+                                        <label class="custom-file" for="file2">
+                                            <input type="file" id="file2" name="profileImageUrl" class="custom-file-input height-0" onchange="form.submit()">
+                                            <span class="btn btn-primary mb-5"><i class="bi bi-image">&nbsp;</i>Upload</span>
+                                        </label>
+                                        <div>
+                                            <small>For best results, use an image at least 256px by 256px in either .jpg or .png format</small>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <hr>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h5>Account Details</h5>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+                        <div class="col-12 col-md-4 order-md-2">
+                           <!-- <div class="alert alert-info text-small" role="alert">
+                                <i class="icon-shield"></i>
+                                <span>
+                      Your information is always kept encrypted and can never be accessed by third parties.
+                    </span>
+                                <a href="#">See our privacy policy</a>
+                            </div>-->
+                        </div>
+                        <!--end of col-->
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <div th:if="${message}"  th:classappend="${message.type}" class="alert mb-3" role="alert" th:text="${message.message}">
+                            </div>
+
+                            <form th:action="@{/update-account}" method="post" class="forms-input mt-2" th:object="${user}">
+
+                                <div class="row">
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Your Firstname" th:value="${user.firstname}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Your LastName" th:value="${user.lastname}">
+                                    </div>
+
+                                    <input type="hidden" name="id" th:value="${user.id}"/>
+
+                                  <!--  <div class="col-md-12 form-group mt-3 mb-3 mt-md-0">
+                                        <input type="email" class="form-control" name="email" id="email" readonly placeholder="Your Email" th:value="${user.email}">
+                                    </div>-->
+
+<!--                                    <div class="col-md-12 form-group mt-3 mt-md-0">-->
+<!--                                        <input type="password" class="form-control" name="password" id="password" placeholder="Your Password">-->
+<!--                                    </div>-->
+
+                                </div>
+
+
+                                <div class="mt-3"><button type="submit">Save Changes</button></div>
+
+                            </form>
+
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <hr>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h5>Profile Information</h5>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+                        <div class="col-12 col-md-4 order-md-2">
+                          <!--  <div class="alert alert-info text-small" role="alert">
+                                <i class="icon-user"></i>
+                                <span>
+                      Some of this information will appear on your public profile. A detailed public profile helps users with similar professional interests and location to connect with you.
+                    </span>
+                                <a href="#">View your public profile</a>
+                            </div>-->
+                        </div>
+                        <!--end of col-->
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <div th:if="${aboutm}"  th:classappend="${aboutm.type}" class="alert mb-3" role="alert" th:text="${aboutm.message}">
+                            </div>
+
+                            <form th:action="@{/update-about}" method="post" class="row forms-input mt-2" th:object="${about}">
+
+                                <div class="col-6 mb-3">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" placeholder="Your Birthday" name="dob" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" th:value="${about.dob}">
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mb-3">
+
+                                    <select class="form-control form-control-lg" name="workType" id="workType" style="width:100%;outline:none;background:rgb(24 24 24);color:#fff;" th:value="${about.workType}">
+                                        <option selected="true" disabled="disabled">Select Type</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Working">Working</option>
+                                        <option value="Freelancer">Freelancer</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="currentCompany" placeholder="Your Current Company"  id="company" th:value="${about.currentCompany}">
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <div class="form-group">
+
+                                        <input class="form-control form-control-lg" type="text" name="currentProject" placeholder="Your Current Project" id="project" th:value="${about.currentProject}">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="city" placeholder="Your City"  id="city" th:value="${about.city}">
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <div class="form-group">
+
+                                        <input class="form-control form-control-lg" type="text" name="country" placeholder="Your Country" id="country" th:value="${about.country}">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control form-control-lg" name="profileBio" rows="4" id="about-me" placeholder="add about yourself" th:text="${about.profileBio}"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-3">
+                                    <div class="form-group">
+                                        <button type="submit">Save changes</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+
+
+
+            </div>
+            <!--end of tab pane-->
+
+
+
+            <div class="tab-pane fade" id="skills" role="tabpanel">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h5>Add Your Skills & Softwares</h5>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+<!--
+                        <div class="col-12 col-md-4 order-md-2">
+                            <div class="alert alert-info text-small" role="alert">
+                                <i class="icon-shield"></i>
+                                <span>
+                      Your information is always kept encrypted and can never be accessed by third parties.
+                    </span>
+                                <a href="#">See our privacy policy</a>
+                            </div>
+                        </div>-->
+                        <!--end of col-->
+
+
+                        <div class="col-6 col-md-6 order-md-1">
+
+                            <form id="skillsForm" class="forms-input mt-2">
+
+                                <ul id="updatedSkills" class="p-0">
+                                    <!-- Iterate over the updated skills and display them -->
+                                    <li th:each="skill : ${updatedSkills}">
+                                        <button class="removeUpdatedSkill">
+                                            <img th:src="@{'img/' + ${skill.skillImageUrl}}" alt="Skill Image" height="25" width="25" class="skillImage" />
+                                            <span th:text="${skill.name}"></span>
+                                            <span class="remove-skill-btn-icon"><i class="bi bi-x"></i></span>
+                                        </button>
+                                    </li>
+                                </ul>
+
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search for skills">
+
+                                <div id="searchResultsContainer">
+                                    <ul id="searchResults"></ul>
+                                </div>
+
+
+                                <ul id="selectedSkills"></ul>
+
+                                <button type="button" id="saveChanges">Save Changes</button>
+                            </form>
+
+
+                        </div>
+                        <!--end of col-->
+
+                        <div class="col-12 col-md-8 order-md-1">
+                        </div>
+
+                        <div class="col-6 col-md-6 order-md-1 mt-5">
+
+                            <form id="softwaresForm" class="forms-input mt-2">
+
+                                <ul id="updatedSoftwares" class="p-0">
+                                    <!-- Iterate over the updated skills and display them -->
+                                    <li th:each="software : ${updatedSoftwares}">
+                                        <button class="removeUpdatedSoftware">
+                                            <img th:src="@{'img/' + ${software.softwareImageUrl}}" alt="Software Image" height="25" width="25" class="softwareImage" />
+                                            <span th:text="${software.name}"></span>
+                                            <span class="remove-skill-btn-icon"><i class="bi bi-x"></i></span>
+                                        </button>
+                                    </li>
+                                </ul>
+
+                                <input type="text" id="searchInputSoftware" class="form-control" placeholder="Search for softwares">
+
+                                <div id="searchResultsContainer">
+                                    <ul id="searchResults"></ul>
+                                </div>
+
+
+                                <ul id="selectedSoftwares"></ul>
+                                <button type="button" id="saveChangessoftware">Save Changes</button>
+                            </form>
+
+                        </div>
+                        <!--end of col-->
+
+
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </div>
+
+
+
+
+
+            <div class="tab-pane fade" id="billing" role="tabpanel">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h5>Change Your Password</h5>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+
+                        <div class="col-12 col-md-4 order-md-2">
+                           <!-- <div class="alert alert-info text-small" role="alert">
+                                <i class="icon-shield"></i>
+                                <span>
+                      Your information is always kept encrypted and can never be accessed by third parties.
+                    </span>
+                                <a href="#">See our privacy policy</a>
+                            </div>-->
+                        </div>
+                        <!--end of col-->
+
+
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <div th:if="${passwordMessage}"  th:classappend="${passwordMessage.type}" class="alert mb-3" role="alert" th:text="${passwordMessage.message}">
+                            </div>
+
+                            <form th:action="@{/change-password}" method="post" class="forms-input mt-2">
+
+                                <div class="row">
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="password" name="oldPassword" class="form-control" id="oldPassword" placeholder="Your Old Password">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="password" name="newPassword" class="form-control" id="newPassword" placeholder="Your New Password">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-3"><button type="submit">Change Password</button></div>
+
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </div>
+
+
+
+
+
+            <!--end of tab pane-->
+            <div class="tab-pane fade" id="notifications" role="tabpanel">
+                <div class="container">
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h5>Update Your Resume</h5>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+
+                    <!--<div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-info text-small mb-0" role="alert">
+                                <i class="icon-shield"></i>
+                                <span>
+                      We will never distribute your email address to third parties. Read about email communication in our privacy policy.
+                    </span>
+                                <a href="#">View privacy policy ›</a>
+                            </div>
+                        </div>
+                        &lt;!&ndash;end of col&ndash;&gt;
+                    </div>
+                    <hr>-->
+                    <div class="row">
+
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <div th:if="${educationMessage}"  th:classappend="${educationMessage.type}" class="alert mb-3" role="alert" th:text="${educationMessage.message}">
+                            </div>
+
+                            <form th:action="@{/update-resume-education}" method="post" class="forms-input mt-2" th:object="${education}">
+
+                                <h5>Add Education</h5>
+
+                                <div class="row">
+
+                                    <div class="col-md-12 form-group mb-3">
+                                        <input type="text" name="collegeName" class="form-control" id="college" placeholder="Your College Name" th:value="${education.collegeName}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input class="form-control form-control-lg" placeholder="College Start Year" name="collegeStartYear" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="collegeStartYear" th:value="${education.collegeStartYear}">
+                                    </div>
+
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input class="form-control form-control-lg" placeholder="College End Year" name="collegeEndYear" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="collegeEndYear" th:value="${education.collegeEndYear}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="department" class="form-control" id="department" placeholder="Stream or Department" th:value="${education.department}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="collegeStatus" class="form-control" id="collegeStatus" placeholder="In college or Completed" th:value="${education.collegeStatus}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="collegeDegree" class="form-control" id="collegeDegree" placeholder="Your Degree Title" th:value="${education.collegeDegree}">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-3"><button type="submit">Save Education Changes</button></div>
+
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+
+
+
+                    <div class="row mt-4">
+
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <div th:if="${experienceMessage}"  th:classappend="${experienceMessage.type}" class="alert mb-3" role="alert" th:text="${experienceMessage.message}">
+                            </div>
+
+                            <form th:action="@{/update-resume-experience}" method="post" class="forms-input mt-2" th:object="${experience}">
+
+                                <h5>Add Professional Experience</h5>
+
+                                <div class="row">
+
+                                    <div class="col-md-12 form-group mb-3">
+                                        <input type="text" name="currentCompanyName" class="form-control" id="currentCompanyName" placeholder="Your Company Name" th:value="${experience.currentCompanyName}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input class="form-control form-control-lg" placeholder="Joining Year" name="joiningYear" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate" th:value="${experience.joiningYear}">
+                                    </div>
+
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input class="form-control form-control-lg" placeholder="Resign Year" name="resignYear" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate" th:value="${experience.resignYear}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="yearOfExperience" class="form-control" id="yearOfExperience" placeholder="Year Of Experience" th:value="${experience.yearOfExperience}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="cityCompany" class="form-control" id="companyCity" placeholder="City Of Your Company" th:value="${experience.cityCompany}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="currentJobDepartment" class="form-control" id="currentJobDepartment" placeholder="Your Job Department" th:value="${experience.currentJobDepartment}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="jobRole" class="form-control" id="jobRole" placeholder="Your Job Role" th:value="${experience.jobRole}">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control form-control-lg" name="experienceSummary" rows="4" id="about-pro" placeholder="add Professional Summary" th:text="${experience.experienceSummary}"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-3"><button type="submit">Save Experience Changes</button></div>
+
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+
+
+
+
+
+                    <div class="row mt-4">
+
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <div th:if="${projectMessage}"  th:classappend="${projectMessage.type}" class="alert mb-3" role="alert" th:text="${projectMessage.message}">
+                            </div>
+
+                            <form th:action="@{/update-resume-project}" method="post" class="forms-input mt-2" th:object="${project}">
+
+                                <h5>Add Projects Details</h5>
+
+                                <div class="row">
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectTitle1" class="form-control" id="projectTitle1" placeholder="Your Project - 1" th:value="${project.projectTitle1}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectLink1" class="form-control" id="projectLink1" placeholder="add Project - 1 web link To Preview" th:value="${project.projectLink1}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectTitle2" class="form-control" id="projectTitle2" placeholder="Your Project - 2" th:value="${project.projectTitle2}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectLink2" class="form-control" id="projectLink2" placeholder="add Project - 2 web link To Preview" th:value="${project.projectLink2}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectTitle3" class="form-control" id="projectTitle3" placeholder="Your Project - 3" th:value="${project.projectTitle3}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectLink3" class="form-control" id="projectLink3" placeholder="add Project - 3 web link To Preview" th:value="${project.projectLink3}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectTitle4" class="form-control" id="projectTitle4" placeholder="Your Project - 4" th:value="${project.projectTitle4}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <input type="text" name="projectLink4" class="form-control" id="projectLink4" placeholder="add Project - 4 web link To Preview" th:value="${project.projectLink4}">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control form-control-lg" name="projectSummary" rows="4" id="projectSummary" placeholder="add project details" th:text="${project.projectSummary}"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-3"><button type="submit">Save Project Changes</button></div>
+
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+
+
+
+
+
+
+                   <!-- <div class="row mt-4">
+
+                        <div class="col-12 col-md-8 order-md-1">
+
+                            <form th:action="@{/update-resume-professional}" method="post" class="forms-input mt-2">
+
+                                <h5>Add Summary About Yourself</h5>
+
+                                <div class="row">
+
+                                    <div class="col-md-12 form-group mb-3">
+                                        <input type="text" name="resumeTitle" class="form-control" id="resumeTitle" placeholder="Your Company Name">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control form-control-lg" name="resumeSummary" rows="4" id="resumeSummary" placeholder="add summary yourself"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-3"><button type="submit">Save Changes</button></div>
+
+                            </form>
+                        </div>-->
+                        <!--end of col-->
+                   <!-- </div>-->
+                    <!--end of row-->
+
+
+
+                </div>
+                <!--end of container-->
+            </div>
+
+        </div>
+        <!--end of tabs content-->
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+</section>
+</body>
+</html>

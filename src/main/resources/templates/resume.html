@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+
+<body>
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+
+
+  <div class="container">
+
+      <h1 th:if="${template == 'template_1'}">template 1</h1>
+
+      <h1 th:if="${template == 'template_2'}">template 2</h1>
+
+      <h1 th:if="${template == 'template_3'}">template 3</h1>
+
+      <h1 th:if="${template == 'template_4'}">template 4</h1>
+
+  </div>
+
+
+</section><!-- End Contact Section -->
+
+</body>
+
+</html>

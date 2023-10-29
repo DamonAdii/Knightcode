@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section style="overflow-x: hidden;">
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="_profile_cover _2ePix" style="background-image: url(https://cdnb.artstation.com/p/assets/images/images/068/126/295/large/tristan-faure-wayfinder-artpost-frostmarch-01.jpg?1697043055)">
+
+            </div>
+
+
+            <div id="background-container" class="_2_H34" style="background-image: linear-gradient(180deg,rgba(6,7,13,0),rgba(6,7,13,.666667));">
+
+            </div>
+
+
+            <div class="_2Ofv6">
+
+                <div class="_1EnH0 _3WnyP">
+                    <span th:if="${user.id != userId}">
+                        <a class="user-link _2f0dA _23x0l">
+                            <img loading="lazy" width="100" height="100" src="/FetchUserProfileFromFileSystem/FetchProfilePic" class="_1IDJa" onerror="this.src='/img/avatar.png'">
+                        </a>
+                    </span>
+
+                    <span th:if="${user.id == userId}">
+                        <a class="user-link _2f0dA _23x0l">
+                            <img loading="lazy" width="100" height="100" th:src="'/FetchUserProfileFromFileSystem/FetchProfilePic/' + ${userId}" class="_1IDJa" onerror="this.src='/img/avatar.png'">
+                        </a>
+                    </span>
+
+                    <div class="_3oLE7">
+                        <h1 class="_38K3K">
+                            <a href="/profile" class="user-link _2f0dA _1yhUI">
+                                <span class="_2UI2c" style="font-weight: bolder;"><span th:text="${user.firstname}"></span> <span th:text="${user.lastname}"></span></span>
+                            </a>
+                        </h1>
+                    <div class="_1PMUg">
+                        <span class="_1thFP">
+                            <div class="_1yr7V">1.2K</div> Watchers</span>
+                        <span class="_1thFP"><span>238</span> Deviations</span>
+                        <span class="_1thFP"><div class="_1yr7V">51.2K
+                        </div> Pageviews</span>
+                    </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+            <!-- scroll nav starts -->
+            <div class="mb-5" id="myHeader">
+                <nav class="_1EdvB" data-hook="profile_nav">
+                    <!--<span class="_11QCc"><h2>Profile Navigation</h2></span>-->
+                   <!-- <div class="_3AIPr"><div class="_22eEA Qq5_e">
+                        <div class="_2YmxY"><span class="_23x0l _2cZH2">
+                            <img alt="mohamedsaberartist's avatar" loading="lazy" data-hook="user_avatar" width="40" height="40" src="https://a.deviantart.net/avatars-big/m/o/mohamedsaberartist.jpg?12" class="_1IDJa"></span>
+                            <div class="MLiNT"><span class="_2QMci _3uD0K">mohamedsaberartist</span></div>
+                        </div>
+                    </div>
+                    </div>-->
+
+
+                    <div class="_1eu2O _18UWO">
+                        <nav id="navbar" class="navbarr">
+                            <ul id="nav-tab" role="tablist">
+                                <!--<li id="stickyimg" style="display:none;">
+                                     <span th:if="${user.id != userId}">
+                                        <a>
+                                            <img loading="lazy" width="35" height="35" src="/FetchUserProfileFromFileSystem/FetchProfilePic"  onerror="this.src='/img/avatar.png'">
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${user.id == userId}">
+                                        <a>
+                                            <img loading="lazy" width="35" height="35" th:src="'/FetchUserProfileFromFileSystem/FetchProfilePic/' + ${userId}"  onerror="this.src='/img/avatar.png'">
+                                        </a>
+                                    </span>
+                                </li>-->
+                                <li class="nav-link active" id="nav-header-tab" data-bs-toggle="tab" data-bs-target="#header" aria-selected="true"><a class="nav-link active" href="#header">Statics</a></li>
+                                <li class="nav-link" id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#about" aria-selected="false"><a class="nav-link" href="#about">Home</a></li>
+                                <!--<li class="nav-link" id="nav-resume-tab" data-bs-toggle="tab" data-bs-target="#resume" aria-selected="false"><a class="nav-link" href="#resume">Resume</a></li>
+                                <li class="nav-link" id="nav-services-tab" data-bs-toggle="tab" data-bs-target="#services" aria-selected="false"><a class="nav-link" href="#services">Services</a></li>
+                                <li class="nav-link" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#portfolio" aria-selected="false"><a class="nav-link" href="#portfolio">Portfolio</a></li>-->
+                                <li class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#contact" aria-selected="false"><a class="nav-link" href="#contact">About</a></li>
+                            </ul>
+                            <!--<i class="bi bi-list mobile-nav-toggle"></i>-->
+                        </nav><!-- .navbar -->
+                    </div>
+
+
+                    <div class="_2mdzZ _36NIY">
+                        <!--<span>hi</span>-->
+                        <span>
+                            <!--th:text="'Follow User ' + ${user.id}"-->
+
+                            <div class="follow-unfollow-section-profile" th:if="${user.id != currentUser.id}">
+
+                                <button th:id="'followButton_' + ${user.id}" class="follow-button"  th:if="${isFollowing != true}">Follow</button>
+
+                                <button th:id="'unfollowButton_' + ${user.id}" class="unfollow-button" th:if="${isFollowing == true}">Unfollow</button>
+
+                            </div>
+
+
+                        </span>
+
+
+                       <!-- <span>
+                            <div th:each="user : ${userList}">
+                                <a th:href="@{'/profile/' + ${user.id}}">View Profile</a>
+                            </div>
+                        </span>-->
+
+
+
+                    </div>
+
+
+
+                </nav>
+            </div>
+
+
+            <div class="tab-content mt-5 p-5 content" id="nav-tabContent" style="position:relative;">
+
+
+                <div class="tab-pane show active" id="header" role="tabpanel" aria-labelledby="nav-header-tab">
+
+
+                   <!-- badges section start here -->
+
+                    <div class="row">
+
+                        <div class="col-3">
+
+                            <div class="sidenavv" id="myLeftNav" style="padding-top:170px;">
+                                <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy">
+                                    <a class="p-1 rounded active" href="#simple-list-item-1" style="color:#9b9ba4;padding-top:30px;">Badges</a>
+                                    <a class="p-1 rounded" href="#simple-list-item-2" style="color:#9b9ba4;padding-top:30px;">Certificate</a>
+                                    <a class="p-1 rounded" href="#simple-list-item-3" style="color:#9b9ba4;padding-top:30px;">Statistics</a>
+                                    <a class="p-1 rounded" href="#simple-list-item-4" style="color:#9b9ba4;padding-top:30px;">Skills</a>
+                                    <a class="p-1 rounded" href="#simple-list-item-5" style="color:#9b9ba4;padding-top:30px;">Softwares</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-9 pt-5">
+
+                            <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+
+                            <div class="card mb-5" id="simple-list-item-1">
+                                <h5 class="card-header"><i class="bi bi-award" style="color:#38a169!important"></i> Badges</h5>
+                                <div class="card-body">
+                                    <div class="_3M3aE" data-max-width="" data-min-width="640 800">
+
+
+                                        <div class="_12GTR_Badge">
+                                            <span class="UmPJf_Badge">Java</span>
+                                            <img src="https://static.vecteezy.com/system/resources/previews/019/899/948/original/java-free-download-free-png.png" height="70" width="70">
+                                        </div>
+
+                                        <div class="_12GTR_Badge">
+                                            <span class="UmPJf_Badge">Javascript</span>
+                                            <img src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" height="70" width="70">
+                                        </div>
+
+                                        <div class="_12GTR_Badge">
+                                            <span class="UmPJf_Badge">Angular</span>
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/768px-Angular_full_color_logo.svg.png" height="70" width="70">
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="card mb-5" id="simple-list-item-2">
+                                <h5 class="card-header"><i class="bi bi-shield-slash-fill" style="color:#38a169!important"></i> Certification</h5>
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="card mb-5" id="simple-list-item-3">
+                                <h5 class="card-header"><i class="bi bi-activity" style="color:#38a169!important"></i> Statistics</h5>
+                                <div class="card-body">
+
+
+                                    <div class="_3M3aE" data-max-width="" data-min-width="640 800">
+                                        <div class="_12GTR">
+                                            <span class="UmPJf">Challenges Attempt</span>
+                                            51.3K
+                                        </div>
+                                        <div class="_12GTR">
+                                            <span class="UmPJf">Test
+                                            </span>
+                                            238
+                                        </div>
+                                        <div class="_12GTR">
+                                            <span class="UmPJf">Post</span>
+                                            1.2K
+                                        </div>
+
+                                        <div class="_12GTR">
+                                            <span class="UmPJf">Practice</span>
+                                            1.5K
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="card mb-5" id="simple-list-item-4">
+                                <h5 class="card-header"><i class="bi bi-shield-slash-fill" style="color:#38a169!important"></i> Badges</h5>
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+
+
+
+                                <div class="card mb-5" id="simple-list-item-5">
+                                    <h5 class="card-header"><i class="bi bi-shield-slash-fill" style="color:#38a169!important"></i> Badges</h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Special title treatment</h5>
+                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="tab-pane" id="about" role="tabpanel" aria-labelledby="nav-profile-tab">
+                about
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation
+            </div>
+
+            <!--<div class="tab-pane" id="resume" role="tabpanel" aria-labelledby="nav-profile-tab">
+              </div>-->
+
+            <!--<div class="tab-pane" id="services" role="tabpanel" aria-labelledby="nav-profile-tab">
+              </div>-->
+
+            <!--<div class="tab-pane" id="portfolio" role="tabpanel" aria-labelledby="nav-profile-tab">
+              </div>-->
+
+            <div class="tab-pane" id="contact" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                <div class="row">
+
+                    <div class="col-3">
+
+                        <div class="sidenavv" id="myLeftNavAbout" style="padding-top:170px;">
+                            <div id="simple-list-example2" class="d-flex flex-column gap-2 simple-list-example-scrollspy">
+                                <a class="p-1 rounded active" href="#simple-list-item-6" style="color:#9b9ba4;padding-top:30px;">About-Me</a>
+                                <a class="p-1 rounded" href="#simple-list-item-7" style="color:#9b9ba4;padding-top:30px;">Skills</a>
+                                <a class="p-1 rounded" href="#simple-list-item-8" style="color:#9b9ba4;padding-top:30px;">Softwares</a>
+                                <a class="p-1 rounded" href="#simple-list-item-9" style="color:#9b9ba4;padding-top:30px;">Summary</a>
+                                <a class="p-1 rounded" href="#simple-list-item-10" style="color:#9b9ba4;padding-top:30px;">Code</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-9 pt-5">
+
+                        <div data-bs-spy="scroll" data-bs-target="#simple-list-example2" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+
+                            <div class="mb-5" id="simple-list-item-6">
+
+                                <div class="card-body">
+
+                                    <h1 style="font-weight:bolder;"><span th:text="${user.firstname}"></span> <span th:text="${user.lastname}"></span></h1>
+
+                                    <h5 style="font-weight:200;"><span style="color#54545f;">Freelance</span> - <span th:text="${about.workType}"></span></h5>
+
+                                    <br>
+
+                                    <h5><i class="bi bi-geo-alt" style="color:#38a169!important"></i> <span th:text="${about.city}"></span>,<span th:text="${about.country}"></span></h5>
+
+                                    <br>
+
+                                    <br>
+                                    <p style="color:#7e7e87;font-size:11px;">MY BIO</p>
+
+                                    <p th:text="${about.profileBio}" style="font-size:14px;font-weight:lighter;"></p>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <div class="card mb-5" id="simple-list-item-7">
+                                <h5 class="card-header"><i class="bi bi-stars" style="color:#38a169!important"></i> Skills</h5>
+                                <div class="card-body">
+
+                                    <div class="PY_FA" data-max-width="" data-min-width="640 800">
+                                        <div class="_3CR67 _19bks _1pn40">
+                                            <div class="_22eEA _2ZDha">
+                                                <div class="_2YmxY">
+                                                    <span class="_23x0l _2cZH2">
+                                                        <img alt="SleepyNiko24's avatar" loading="lazy" data-hook="user_avatar" width="40" height="40" src="https://a.deviantart.net/avatars-big/s/l/sleepyniko24.gif?7" class="_1IDJa">
+                                                    </span>
+                                                    <div class="MLiNT">
+                                                        <span class="_2QMci">S
+                                                            Spring Boot
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="_3CR67 _19bks _1pn40">
+                                            <div class="_22eEA _2ZDha">
+                                                <div class="_2YmxY">
+                                                    <span class="_23x0l _2cZH2">
+                                                        <img alt="SleepyNiko24's avatar" loading="lazy" data-hook="user_avatar" width="40" height="40" src="https://a.deviantart.net/avatars-big/s/l/sleepyniko24.gif?7" class="_1IDJa">
+                                                    </span>
+                                                    <div class="MLiNT">
+                                                        <span class="_2QMci">S
+                                                            Spring Boot
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="card mb-5" id="simple-list-item-8">
+                                <h5 class="card-header"><i class="bi bi-code" style="color:#38a169!important"></i> Softwares</h5>
+                                <div class="card-body">
+
+
+                                    <div class="PY_FA" data-max-width="" data-min-width="640 800">
+                                        <div class="_3CR67 _19bks _1pn40">
+                                            <div class="_22eEA _2ZDha">
+                                                <div class="_2YmxY">
+                                                    <span class="_23x0l _2cZH2">
+                                                        <img alt="SleepyNiko24's avatar" loading="lazy" data-hook="user_avatar" width="40" height="40" src="https://a.deviantart.net/avatars-big/s/l/sleepyniko24.gif?7" class="_1IDJa">
+                                                    </span>
+                                                    <div class="MLiNT">
+                                                        <span class="_2QMci">S
+                                                            Eclipse
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="_3CR67 _19bks _1pn40">
+                                            <div class="_22eEA _2ZDha">
+                                                <div class="_2YmxY">
+                                                    <span class="_23x0l _2cZH2">
+                                                        <img alt="SleepyNiko24's avatar" loading="lazy" data-hook="user_avatar" width="40" height="40" src="https://a.deviantart.net/avatars-big/s/l/sleepyniko24.gif?7" class="_1IDJa">
+                                                    </span>
+                                                    <div class="MLiNT">
+                                                        <span class="_2QMci">S
+                                                            Mysql GUI
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="card mb-5" id="simple-list-item-9">
+                                <h5 class="card-header"><i class="bi bi-shield-slash-fill" style="color:#38a169!important"></i> Badges</h5>
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="card mb-5" id="simple-list-item-10">
+                                <h5 class="card-header"><i class="bi bi-shield-slash-fill" style="color:#38a169!important"></i> Badges</h5>
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

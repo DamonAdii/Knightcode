@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title th:text="${title}"></title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="stylesheet">
+    <link href="img/apple-touch-icon.png" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+
+    <!-- Template Main CSS File -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+
+
+    <!-- Template Main CSS File -->
+<!--    <link th:href="@{/codemirror/lib/codemirror.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/codemirror/theme/dracula.css}" rel="stylesheet" type="text/css">-->
+
+
+    <!--monaco editor-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/editor/editor.main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/editor/contrib/themes/material-dark.css">
+
+
+
+
+</head>
+
+<body>
+
+<!--header starts from here-->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid px-0">
+        <a class="navbar-brand text-light" href="/">
+            <!-- <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2021/05/1200px-Upwork-logo.svg-e1622132335383.png?auto=format&q=60&fit=max&w=930" alt="" class="" style="width: 100px;height: 40px;object-fit: contain;"> -->
+            <b>KNIGHT<span style="color: #6FDA44;font-weight: 600;">CODE <i class="bi bi-amd"></i></span></b>
+        </a>
+
+        <div class="ms-auto d-flex align-items-center order-lg-3">
+
+           <!-- <ul class="navbar-nav navbar-right-wrap mx-2 flex-row navbarr">
+                <li><a class="nav-link active text-light" href="#header">HOME</a></li>
+                <li><a class="nav-link text-light" href="#resume">Resume</a></li>
+                <li><a class="nav-link text-light" href="#services">Services</a></li>
+            </ul>-->
+
+            <a class="ml-4" href="/signin" style="margin-right:13px;color: #fff !important;" th:if="${user} == null">
+                Sing in
+            </a>
+
+            <a class="btn btn-light ml-4" href="/signup" th:if="${user} == null" style="height:36px;border-radius:2px">
+                <b><i class="bi bi-box-arrow-in-right"></i> Be a Knighter</b>
+            </a>
+
+
+
+
+
+            <ul class="navbar-nav navbar-right-wrap mx-2 flex-row" th:if="${user} != null">
+                <li class="dropdown d-inline-block stopevent position-static">
+                    <a class="btn btn-icon text-muted indicator indicator-primary" href="#" role="button" id="dropdownNotificationSecond" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff !important;background-color: #111;border: .1 px solid #333333;">
+                        <i class="bi bi-bell text-light"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg position-absolute mx-3 my-0" aria-labelledby="dropdownNotificationSecond">
+                        <div>
+                            <div class="px-3 pb-3 d-flex justify-content-between align-items-center" style="border: transparent;">
+                                <span class="h5 mb-0">Notifications</span>
+                                <a href="# " class="text-muted"><span class="align-middle"><i class="fe fe-settings me-1"></i></span></a>
+                            </div>
+                            <ul class="list-group list-group-flush" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+
+                                <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;">
+
+                                    <div class="simplebar-content" style="padding: 0px;">
+
+                                        <li class="list-group-item" style="background:#161616; border:.1px solid #333333;color: #ffffff;">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a class="text-body text-light" href="#" style="text-decoration: none;">
+                                                        <div class="d-flex">
+                                                            <img src="https://geeksui.codescandy.com/geeks/assets/images/avatar/avatar-1.jpg" alt="" class="avatar-md rounded-circle" height="45" width="45" style="border-radius: 100%;">
+                                                            <div class="ms-3">
+                                                                <h5 class="fw-bold mb-1 text-light">Kristin Watson:</h5>
+                                                                <p class="mb-3 text-light">
+                                                                    Krisitn Watsan like your comment on course
+                                                                    Javascript Introduction!
+                                                                </p>
+                                                                <span class="fs-6 text-muted">
+															 <span class="text-light"><span class="fa fa-thumbs-up text-success me-1"></span>2
+																 hours ago,</span>
+															 <span class="ms-1 text-light">2:19 PM</span>
+														 </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-auto text-center me-2">
+
+                                                    <a href="#" class="badge-dot bg-info" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Mark as read" data-bs-original-title="Mark as read" style="text-decoration: none;">
+                                                    </a>
+                                                    <div>
+                                                        <a href="#" class="bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Remove" data-bs-original-title="Remove">
+                                                            <i class="fa fa-x text-muted" style="font-size: .7rem !important;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div></ul>
+                            <div class="px-3 pt-3 pb-0">
+                                <a href="#" class="text-link fw-semibold text-light" style="text-decoration: none;">See
+                                    all Notifications <i class="fa fa-arrow-right text-light"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+                <li class="ms-3 d-inline-block stopevent position-static">
+                    <i class="btn-icon bi bi-ui-radios-grid text-light" style="font-size:22px;font-weight:normal;"></i>
+                </li>
+
+                <li class="button-item separator ms-3" style="margin: 0 5px;color: #b7c9cc;margin-top: 4px;">|</li>
+
+                <!-- user dash drop down starts here -->
+
+                <li class="dropdown ms-3 d-inline-block position-static">
+                    <a class="rounded-circle show" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="true" style="text-decoration: none;color: #111;font-weight: 400;">
+                        <div class="avatar avatar-md avatar-indicators-top avatar-online">
+                            <img alt="avatar" src="/FetchUserProfileFromFileSystem/FetchProfilePic" height="35" width="35" style="border-radius: 100%;margin-right:7px;" class="rounded-circle">
+                            <i class="bi bi-chevron-down text-light"></i>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end position-absolute mx-3 my-0" data-bs-popper="static">
+                        <div class="dropdown-item">
+                            <div class="d-flex" href="#" style="cursor: pointer;">
+                                <div class="avatar avatar-md avatar-indicators-bottom avatar-online">
+                                    <img alt="avatar" src="/FetchUserProfileFromFileSystem/FetchProfilePic"  height="45" width="45" style="border-radius: 100%;" class="rounded-circle">
+                                </div>
+                                <div class="ms-3 lh-1">
+                                    <h5 class="mb-1 text-light" style="font-size: 1rem !important;font-weight: 500;color: #fff !important;"><span th:text="${user.firstname}"></span> <span th:text="${user.lastname}"></span></h5>
+                                    <p class="mb-0 text-muted text-light" style="font-size: .8rem !important;color: #fff !important;" th:text="${user.email}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item text-light" href="/profile">
+                                    <i class="fe fe-user me-2"></i>Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-light" href="/update-profile">
+                                    <i class="fe fe-star me-2"></i>Update Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-light" href="#">
+                                    <i class="fe fe-settings me-2"></i>Settings
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li style="cursor: pointer;">
+                                <a class="dropdown-item text-light" th:href="@{/logout}">
+                                    <i class="fe fe-power me-2"></i>Sign Out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+
+
+        </div>
+        <div>
+            <!-- Button -->
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid #fff !important;">
+                <span class="navbar-toggler-icon" style="color: #fff !important;"></span>
+            </button>
+        </div>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbar-default">
+            <!--<ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a><b>Shop</b></a>
+                </li>-->
+
+                <!--<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarLanding" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Landings
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarLanding">
+                        <li>
+                            <h4 class="dropdown-header text-light">Landings</h4>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-item d-flex justify-content-between text-light">
+                                Education <span class="badge bg-primary ms-1">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item d-flex justify-content-between text-light">
+                                Home Academy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item text-light">
+                                Courses
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item text-light">
+                                Lead Course
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item text-light">
+                                Request Access
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item text-light">
+                                SaaS
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="../pages/landings/landing-job.html" class="dropdown-item d-flex justify-content-between text-light">
+                                Job Listing
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>-->
+
+            <!--</ul>-->
+
+            <div class="dropdown d-none d-md-block">
+                <button class="btn btn-light-primary text-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list-nested me-2 align-middle"></i>
+                    Category
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        <a class="dropdown-item text-white" href="#">Web Development</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item text-white" href="#">Design</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- Mobile view nav wrap -->
+
+            <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center" style="background:#232323;height:35px;">
+				<span class="position-absolute ps-3 search-icon" style="padding-left:1rem!important;">
+					<i class="bi bi-search" style="font-size:.8em;color:#6f7075;"></i>
+				</span>
+                <input type="search" class="ps-6 text-light" placeholder="Search Courses"  style="height:35px;padding-left: 2.5rem!important;background-color: transparent;border:.1px solid #353740;color: #5d5d5d;padding-left: 40px;outline:none;">
+            </form>
+
+        </div>
+
+    </div>
+</nav>
+
+<!--header ends here-->
+
+<section th:replace="${content}"></section>
+
+
+<!-- Vendor JS Files -->
+<script th:src="@{/vendor/purecounter/purecounter_vanilla.js}" type="text/javascript"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+<script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+<script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}" type="text/javascript"></script>
+<script th:src="@{/vendor/swiper/swiper-bundle.min.js}" type="text/javascript"></script>
+<script th:src="@{/vendor/waypoints/noframework.waypoints.js}" type="text/javascript"></script>
+<!--<script src="vendor/php-email-form/validate.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<!-- Template Main JS File -->
+<script th:src="@{/js/follow.js}"></script>
+<script th:src="@{/js/stickynav.js}"></script>
+<script th:src="@{/js/sidenavFix.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/skills.js}"></script>
+<script th:src="@{/js/softwares.js}"></script>
+<!--<script th:src="@{/codemirror/lib/codemirror.js}"></script>
+<script th:src="@{/codemirror/mode/xml/xml.js}"></script>
+<script th:src="@{/codemirror/addon/edit/closetag.js}"></script>-->
+<!--<script th:src="@{/js/CodeEditor.js}"></script>-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--monaco editor-->
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/language/java/monaco.contribution.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/basic-languages/java/java.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/eslint/eslint.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/checkstyle/dist/checkstyle.js"></script>
+<script th:src="@{/js/monacocompiler.js}"></script>
+</body>
+
+</html>
