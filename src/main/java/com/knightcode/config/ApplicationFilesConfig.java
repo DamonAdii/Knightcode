@@ -15,6 +15,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("knightcode-directory-config")
 public class ApplicationFilesConfig {
 
-    private String UserProfileDirectory , replaceuseridvariablename;
+    private String UserProfileDirectory , replaceuseridvariablename, UserProfileCoverDirectory;
 
 }

@@ -1,0 +1,235 @@
+.editor-section {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+#editor {
+    font-size: 16px;
+    resize: none;
+    height: 510px;
+}
+
+.section_run_code_btn a.btn{
+color: #bcbcbc;
+    outline: none;
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+button#run-button {
+    background-color: #575757;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+button#run-button:hover{
+background-color: #605f5f;
+}
+
+button#submit-code{
+    background-color: #6FDA44;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+button#submit-code:hover{
+background-color: #4ea42b;
+}
+
+.output {
+    resize: none;
+    height: 510px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    overflow-y: auto;
+    display: none;
+}
+
+
+.loader {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+.section_run_code_btn{
+position:relative;
+bottom:0;
+width:100%;
+padding:10px;
+background:#333;
+border-radius:0px;
+}
+
+._problem_description_{
+padding-left:15px;
+padding-right:15px;
+padding-top:7px;
+padding-bottom:7px;
+background:#252424;
+border-radius:10px;
+}
+
+.panel-actions {
+  margin-top: -20px;
+  margin-bottom: 0;
+  text-align: right;
+}
+.panel-actions a {
+  color:#333;
+}
+.panel{
+    border-radius: 10px;
+    padding: 10px;
+}
+.panel-fullscreen {
+    display: block;
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
+    background:#232323;
+    height: 100%;
+    top: 0px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.list-inline li{
+    display: inline;
+    margin-left: 10px;
+}
+
+
+.list-inline span.btn{
+background: #040404;
+border-radius: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #39542e;
+    color: #afaeae;
+}
+
+._editor_def li{
+    display: inline;
+    margin-right: 10px;
+}
+
+._problem_topi_ li{
+list-style: none;
+    display: inline;
+    margin-right: 8px;
+    color: #888383;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+._challenge-main-section{
+width:100%;
+overflow-x: hidden;
+max-height:581px;
+background: #101010;
+padding: 20px;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+border-top-right-radius: 10px;
+font-weight:200;
+}
+
+
+._challenge-main-section::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #040404;;
+}
+
+._challenge-main-section::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #040404;;
+}
+
+._challenge-main-section::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #1c1c1c;
+}
+
+._challenge-main-header-section button.nav-link{
+background: transparent;
+    color: #bcbcbc;
+    border: 1px solid #333;
+    border-radius: 2px;
+    font-size:14px;
+    padding-left:25px;
+    padding-right:25px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+._challenge-main-header-section button.nav-link:hover{
+background: transparent;
+    color: #fff;
+    border: 1px solid #5d5d5d;
+    border-radius: 0px;
+}
+
+._challenge-main-header-section button.nav-link.active{
+    font-weight: 500;
+    background: #1d1c1c;
+    color: #ffffff;
+    border: 1px solid #5d5d5d;
+}
+
+._challenges_lists li{
+list-style:none;
+display:inline;
+}
+
+.mx-auto._challenges_lists{
+    margin-right: auto!important;
+    margin-left: 0!important;
+    padding-left:0px;
+    padding-top: 5px;
+}
+
+.ms-auto._challenges_lists {
+    margin-left: auto!important;
+    padding-top: 5px;
+}
+
+._next_challenge,._prev_challenge{
+    font-weight: 500;
+    background: #181717;
+    color: #bcbcbc;
+    padding:5px;
+    border: 1px solid #5d5d5d;
+    cursor:pointer;
+}
+
+
+._next_challenge:hover,._prev_challenge:hover{
+background:#403e3e;
+}

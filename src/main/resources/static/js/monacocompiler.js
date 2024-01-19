@@ -250,4 +250,123 @@ require(['vs/editor/editor.main'], function () {
 
               // Listen for changes in the code and re-analyze
               editor.onDidChangeModelContent(analyzeJavaCode);
+
+
+            const runButton = document.getElementById('run-button');
+            const viewConsole = document.getElementById('view-console');
+            const codeTextarea = document.getElementById('editor');
+            const outputDiv = document.getElementById('output');
+            let isEditorHidden = false;
+
+                  runButton.addEventListener('click', () => {
+                      if (!isEditorHidden) {
+
+
+                                  // get the code from code editor
+                                  var code = editor.getValue();
+                                  console.log(code); // This will log the code value to the console;
+
+
+
+                                 // Simulate running the code (replace with actual code execution logic)
+                                // const result = executeCode(code);
+
+                                // now call the judge0 api with data
+                                /*const url = 'https://judge0-ce.p.rapidapi.com/languages';
+                                const options = {
+                                    method: 'GET',
+                                    headers: {
+                                    		'X-RapidAPI-Key': '198c9e2812msh30c3c084c55a9d1p149b3bjsnfcd1a78f88e0',
+                                    		'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
+                                    	}
+                                };
+
+                                async function fetchData() {
+                                    try {
+                                        const response = await fetch(url, options);
+                                        if (response.ok) {
+                                            const result = await response.text();
+                                            console.log(result);
+                                             // Hide the code editor and display the output
+                                             codeTextarea.style.display = 'none';
+                                             isEditorHidden = true;
+
+                                             // Display the output
+                                             outputDiv.textContent = result;
+                                             outputDiv.style.display = 'block';
+
+                                        } else {
+                                            console.error('Request failed with status: ' + response.status);
+                                        }
+                                    } catch (error) {
+                                        console.error(error);
+                                    }
+                                }
+
+                                fetchData();*/
+
+                                // Hide the code editor and display the output
+                                codeTextarea.style.display = 'none';
+                                isEditorHidden = true;
+
+                                // Display the output
+                                outputDiv.textContent = result;
+                                outputDiv.style.display = 'block';
+                      }
+
+                  });
+
+
+
+                  function executeCode(code) {
+                      // Replace this with actual code execution logic (e.g., using an online compiler or interpreter)
+
+                      return result;
+                  }
+
+
+                  viewConsole.addEventListener('click', () => {
+                      if (isEditorHidden) {
+                          // Show the code editor
+                          codeTextarea.style.display = 'block';
+                          outputDiv.style.display = 'none';
+                          isEditorHidden = false;
+                      } else {
+                          // Hide the code editor and display the output
+                          codeTextarea.style.display = 'none';
+                          isEditorHidden = true;
+
+                          // Simulate running the code (replace with actual code execution logic)
+                  /*      const code = codeTextarea.value;
+                          const result = executeCode(code);*/
+
+                          // Display the output
+                          /*outputDiv.textContent = result;*/
+                          outputDiv.style.display = 'block';
+                      }
+                  });
+
+                  /*runButton.addEventListener('click', () => {
+                      if (isEditorHidden) {
+                          // Show the code editor
+                          codeTextarea.style.display = 'block';
+                          outputDiv.style.display = 'none';
+                          isEditorHidden = false;
+                      } else {
+                          // Hide the code editor and display the output
+                          codeTextarea.style.display = 'none';
+                          isEditorHidden = true;
+
+                          // Simulate running the code (replace with actual code execution logic)
+                          const code = codeTextarea.value;
+                          const result = executeCode(code);
+
+                          // Display the output
+                          outputDiv.textContent = result;
+                          outputDiv.style.display = 'block';
+                      }
+                  });*/
+
+
+
           });

@@ -28,6 +28,7 @@
     <!-- Template Main CSS File -->
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/challenge.css}" rel="stylesheet" type="text/css">
 
 
     <!-- Template Main CSS File -->
@@ -52,7 +53,7 @@
     <div class="container-fluid px-0">
         <a class="navbar-brand text-light" href="/">
             <!-- <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2021/05/1200px-Upwork-logo.svg-e1622132335383.png?auto=format&q=60&fit=max&w=930" alt="" class="" style="width: 100px;height: 40px;object-fit: contain;"> -->
-            <b>KNIGHT<span style="color: #6FDA44;font-weight: 600;">CODE <i class="bi bi-amd"></i></span></b>
+            <b>CODE<span style="color: #6FDA44;font-weight: 600;">STATION <i class="bi bi-amd"></i></span></b>
         </a>
 
         <div class="ms-auto d-flex align-items-center order-lg-3">
@@ -148,7 +149,7 @@
                 <li class="dropdown ms-3 d-inline-block position-static">
                     <a class="rounded-circle show" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="true" style="text-decoration: none;color: #111;font-weight: 400;">
                         <div class="avatar avatar-md avatar-indicators-top avatar-online">
-                            <img alt="avatar" src="/FetchUserProfileFromFileSystem/FetchProfilePic" height="35" width="35" style="border-radius: 100%;margin-right:7px;" class="rounded-circle">
+                            <img alt="avatar" src="/FetchUserProfileFromFileSystem/FetchProfilePic" height="35" width="35" style="border-radius: 100%;margin-right:7px;" class="rounded-circle" onerror="this.src='/img/avatar.png'">
                             <i class="bi bi-chevron-down text-light"></i>
                         </div>
                     </a>
@@ -156,7 +157,7 @@
                         <div class="dropdown-item">
                             <div class="d-flex" href="#" style="cursor: pointer;">
                                 <div class="avatar avatar-md avatar-indicators-bottom avatar-online">
-                                    <img alt="avatar" src="/FetchUserProfileFromFileSystem/FetchProfilePic"  height="45" width="45" style="border-radius: 100%;" class="rounded-circle">
+                                    <img alt="avatar" src="/FetchUserProfileFromFileSystem/FetchProfilePic"  height="45" width="45" style="border-radius: 100%;" class="rounded-circle" onerror="this.src='/img/avatar.png'">
                                 </div>
                                 <div class="ms-3 lh-1">
                                     <h5 class="mb-1 text-light" style="font-size: 1rem !important;font-weight: 500;color: #fff !important;"><span th:text="${user.firstname}"></span> <span th:text="${user.lastname}"></span></h5>
@@ -327,6 +328,7 @@
 <script src="https://cdn.jsdelivr.net/npm/eslint/eslint.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/checkstyle/dist/checkstyle.js"></script>
 <script th:src="@{/js/monacocompiler.js}"></script>
+<script th:src="@{/js/challenge.js}"></script>
 </body>
 
 </html>

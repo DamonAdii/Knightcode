@@ -527,6 +527,14 @@ border-bottom:1px solid transparent;
 
 }
 
+
+._profile-cover-change-section {
+    position: absolute;
+    top: 75px;
+    right: 23px;
+    z-index: 100;
+}
+
 ._2ePix {
     position: relative;
     top: 0px;

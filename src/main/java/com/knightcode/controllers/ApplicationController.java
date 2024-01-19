@@ -47,6 +47,14 @@ public class ApplicationController {
 
 
 
+    @GetMapping("/solve-challenge")
+    public String getSolveChallenge(Model model){
+        model.addAttribute("title","Challenge - KnightCode");
+        return "solve-challenge";
+    }
+
+
+
     @GetMapping("/auth/admin/message")
     @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseBody
@@ -72,5 +80,8 @@ public class ApplicationController {
 
 
     }
+
+
+
 
 }

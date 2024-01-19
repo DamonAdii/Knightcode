@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="media account-ed flex-wrap mb-0 align-items-center">
-                                <img alt="Image" src="/FetchUserProfileFromFileSystem/FetchProfilePic" class="usercover avatarr-lg mb-3 mt-3 mb-md-0">
+                                <img alt="Image" src="/FetchUserProfileFromFileSystem/FetchProfilePic" class="usercover avatarr-lg mb-3 mt-3 mb-md-0" onerror="this.src='/img/avatar.png'">
                                 <div class="media-body">
                                     <form th:action="@{/update-profile-picture}" method="post" enctype="multipart/form-data">
                                         <label class="custom-file" for="file2">

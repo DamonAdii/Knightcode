@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+        <section>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="panel panel-default">
+
+                            <div class="row">
+
+                                <div class="col-6 mr-0">
+
+                                    <div class="panel-body">
+
+                                        <div class="_challenge-main-header-section text-light  d-flex">
+
+                                            <ul class="mx-auto _challenges_lists">
+                                                <li class="_prev_challenge" style="padding-right:10px;"><i class="bi bi-chevron-left"></i> PREV</li>
+                                            </ul>
+
+                                            <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 1px solid transparent;">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Problem</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Concept</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Submissions (2k)</button>
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="ms-auto _challenges_lists">
+                                                <li class="_next_challenge" style="padding-left: 10px;">NEXT <i class="bi bi-chevron-right"></i></li>
+                                            </ul>
+
+                                        </div>
+
+                                        <div class="_challenge-main-section text-light">
+
+
+                                            <div class="tab-content" id="myTabContent">
+
+
+                                                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+                                                    <ul class="_problem_topi_ p-0">
+                                                        <li>Java</li>
+                                                        <li><span style="color:#676666"> <i class="bi bi-chevron-compact-right"></i> </span></li>
+                                                        <li>String</li>
+                                                        <li><span style="color:#676666"> <i class="bi bi-chevron-compact-right"></i> </span></li>
+                                                        <li style="opacity: .7;">BufferString</li>
+
+                                                    </ul>
+
+                                                    <h5>
+                                                        Two Sum
+                                                    </h5>
+
+
+                                                        <fieldset class="_problem_description_ mt-3">
+
+                                                            <p>
+                                                                Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+                                                                <br>
+                                                                <br>
+                                                                You may assume that each input would have exactly one solution, and you may not use the same element twice.
+                                                                <br>
+                                                                <br>
+                                                                You can return the answer in any order.
+                                                            </p>
+
+                                                        </fieldset>
+
+
+
+                                                    <p>
+
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        Example 1:
+                                                        <br>
+                                                        Input: nums = [2,7,11,15], target = 9
+                                                        Output: [0,1]
+                                                        Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+                                                        Example 2:
+                                                        <br>
+                                                        <br>
+                                                        Input: nums = [3,2,4], target = 6
+                                                        Output: [1,2]
+                                                        Example 3:
+                                                        <br>
+                                                        <br>
+                                                        Input: nums = [3,3], target = 6
+                                                        Output: [0,1]
+                                                        <br>
+                                                        <br>
+                                                        Constraints:
+                                                        <br>
+                                                        <br>
+                                                        2 = nums.length = 104
+                                                        -109 = nums[i] = 109
+                                                        -109 = target = 109
+                                                        Only one valid answer exists.
+                                                        <br>
+                                                        <br>
+                                                        Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+                                                    </p>
+
+                                                </div>
+
+
+
+                                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+
+
+                                                </div>
+
+
+
+
+                                                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-6 ml-0">
+
+                                    <div class="panel-heading">
+
+
+                                       <ul class="list-inline panel-actions d-flex" style="background:#202020;padding: 10px;margin-top: 0px;">
+
+                                           <li><span class="btn">Java Compiler</span></li>
+
+                                            <li class="ms-auto"><a href="#" role="button" title=""><i class="bi bi-bookmark" style="color: #bcbcbc;"></i></a></li>
+
+                                            <li><a href="#" id="panel-fullscreen" role="button" title="Toggle fullscreen"><i class="bi bi-arrows-angle-expand" style="color: #bcbcbc;font-size:14px;"></i></a></li>
+
+                                       </ul>
+
+                                        <!--<div>
+                                            <div id="editor" style="height: 500px;"></div>
+                                        </div>-->
+
+                                        <div class="editor-section">
+                                            <div id="editor"></div>
+
+                                            <div class="output" id="output">Output will appear here.</div>
+                                        </div>
+
+                                        <div class="section_run_code_btn d-flex">
+
+                                            <a class="btn" id="view-console">console <i class="bi bi-chevron-up"></i></a>
+
+                                            <button class="ms-auto mr-2" id="run-button">Run</button>
+
+                                            <button type="submit" id="submit-code">Make Submission</button>
+
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+</body>
+</html>
